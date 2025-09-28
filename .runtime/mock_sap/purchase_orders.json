@@ -173,5 +173,16 @@
     "total_amount": 750.0,
     "approved": true,
     "created_at": 1759052234
+  },
+  {
+    "po_id": "PO1759080628",
+    "material_code": "P-1001",
+    "quantity": 3,
+    "unit_price": 250.0,
+    "vendor_code": "V-THA-01",
+    "currency": "THB",
+    "total_amount": 750.0,
+    "approved": true,
+    "created_at": 1759080628
   }
 ]

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # SAP Data Entry Chatbot — Starter (FastAPI)
 
 A minimal, local-first chatbot to **simulate** SAP data-entry flows (e.g., Purchase Order) and later **switch** to real SAP via OData/RFC once credentials are available.
@@ -56,3 +57,6 @@ tests/
 - Add authentication (JWT) and audit logging.
 - Plug to SAP BTP / SAP Gateway OData.
 - Integrate Teams/LINE OA via webhook (optional).
+=======
+# sap-chatbot
+>>>>>>> 86ffce9294f195441d48c31377949edd161282a7

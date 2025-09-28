@@ -95,5 +95,33 @@ window.addEventListener('DOMContentLoaded', () => {
   document.getElementById('text').focus();
 });
 
+async function submitPO(e){
+  e.preventDefault();
+  const body = {
+    quantity: parseInt(document.getElementById('qty').value, 10),
+    material_code: document.getElementById('mat').value.trim(),
+    unit_price: parseFloat(document.getElementById('price').value),
+    vendor_code: document.getElementById('vendor').value.trim(),
+    currency: document.getElementById('ccy').value
+  };
+  add('me', `สร้าง PO (ฟอร์ม): ${body.quantity} ${body.material_code} ${body.unit_price} ${body.vendor_code}`);
+  const res = await fetch('/po', {
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify(body)
+  });
+  const data = await res.json();
+  add('bot', data.reply || 'สร้างไม่สำเร็จ');
+  if (data.data){
+    const pre = document.createElement('pre');
+    pre.textContent = JSON.stringify(data.data, null, 2);
+    document.getElementById('chat').appendChild(pre);
+  }
+  scrollBottom();
+}
+window.addEventListener('DOMContentLoaded', ()=>{
+  document.getElementById('po-form')?.addEventListener('submit', submitPO);
+});
+
 add('bot', 'สวัสดี! พิมพ์ "help" เพื่อดูสิ่งที่ฉันทำได้');
 

@@ -3,7 +3,7 @@ from pydantic import BaseModel
 from .nlu import parse_intent
 from .sap_client import get_backend
 from .schemas import PurchaseOrderIn, VendorIn
-
+import re      
 router = APIRouter()
 
 class ChatIn(BaseModel):
@@ -44,3 +44,10 @@ def chat(payload: ChatIn):
         return {"reply": "ฉันช่วยได้: create PO, create vendor, ดูสถานะ PO, พิมพ์ 'help' เพื่อดูตัวอย่าง", "intent": intent}
 
     return {"reply": "ฉันยังไม่เข้าใจ ลองพิมพ์ 'help' ดูนะ", "intent": intent}
+
+@router.post("/po")
+def create_po_direct(body: PurchaseOrderIn):
+    backend = get_backend()
+    po = backend.create_purchase_order(body)
+    note = "" if po.get("approved", True) else " (ต้องขออนุมัติ)"
+    return {"reply": f"สร้าง PO เรียบร้อย (demo): {po['po_id']}{note}", "data": po}

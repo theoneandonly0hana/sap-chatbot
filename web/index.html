@@ -31,6 +31,14 @@
       <input id="file" type="file" accept=".png,.jpg,.jpeg,.pdf,.xlsx,.xls,.csv">
       <button type="submit">Upload to Fill PO</button>
     </form>
+    <form id="po-form" class="input" style="gap:8px;margin-top:8px;display:flex;flex-wrap:wrap">
+      <input id="qty" type="number" min="1" placeholder="จำนวน (qty)" required>
+      <input id="mat" type="text" placeholder="รหัสสินค้า (P-1001)" required>
+      <input id="price" type="number" step="0.01" placeholder="ราคา/ชิ้น" required>
+      <input id="vendor" type="text" placeholder="ผู้ขาย (V-THA-01)" required>
+      <select id="ccy"><option>THB</option><option>USD</option></select>
+      <button type="submit">Create PO</button>
+    </form>
     <footer>Try: <code>help</code> · <code>สถานะ PO ล่าสุด</code></footer>
   </div>
   <script src="chat.js"></script>
